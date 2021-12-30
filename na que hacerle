@@ -1,9 +1,15 @@
+  <body>
 <?php
-$ip = $_SERVER[‘REMOTE_ADDR’];
-$dt = date(“l dS \of F Y h:i:s A”);
-$file=fopen(“ip_log.txt“,”a”);
-$data = $ip.’ ‘.$dt.”\n”;
-fwrite($file, $data);
-fclose($file);
-header( ‘Location: https://bladderr.github.io/Casateuwu/‘ ) ; 
-?>
+$file_with_ips = 'ip_log.txt';
+$ips = file_get_contents($file_with_ips);
+$contenido = txt_decode($ips,true);
+
+if(isset($_GET["mostrar"])){
+  echo "<p>IP: <b>".$contenido[$_GET["k"]] ."</b></p>";
+}
+else{
+  $contenido[$_GET["k"]] = $_SERVER[REMOTE_ADDR];
+  file_put_contents($file_with_ips, txt_encode($contenido));
+}
+
+  ?>
